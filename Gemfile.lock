@@ -3,6 +3,7 @@ PATH
   specs:
     neo4j-ruby-driver (4.4.5.20241010164654)
       activesupport (>= 5.2.0)
+      async (= 2.12.0)
       async-io
       connection_pool
       zeitwerk (>= 2.1.10)
@@ -21,10 +22,10 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
-    async (2.17.0)
-      console (~> 1.26)
+    async (2.12.0)
+      console (~> 1.25, >= 1.25.2)
       fiber-annotation
-      io-event (~> 1.6, >= 1.6.5)
+      io-event (~> 1.6)
     async-io (1.43.2)
       async
     base64 (0.2.0)
