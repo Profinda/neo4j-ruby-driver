@@ -10,17 +10,17 @@ module Neo4j::Driver
 
           def write(message1, handler1, message2 = nil, handler2 = nil)
             if message2.present? && handler2.present?
-              delegate.write(message1, handler1, message2, handler2)
+              delegate.write(message1, new_routing_response_handler(handler1), message2, new_routing_response_handler(handler2))
             else
-              delegate.write(message1, handler1)
+              delegate.write(message1, new_routing_response_handler(handler1))
             end
           end
 
           def write_and_flush(message1, handler1, message2 = nil, handler2 = nil)
             if message2.present? && handler2.present?
-              delegate.write_and_flush(message1, handler1, message2, handler2)
+              delegate.write_and_flush(message1, new_routing_response_handler(handler1), message2, new_routing_response_handler(handler2))
             else
-              delegate.write_and_flush(message1, handler1)
+              delegate.write_and_flush(message1, new_routing_response_handler(handler1))
             end
           end
 
