@@ -32,7 +32,7 @@ module Neo4j::Driver
           @table_lock.with_write_lock do
             @expiration_timestamp = cluster.expiration_timestamp
             @readers = new_with_reused_addresses(@readers, @disused, cluster.readers)
-            @writers = new_with_reused_addresses(@writers, @disused, cluster.writers)
+            @writers = (cluster.writers.to_set - @disused).freeze
             @routers = new_with_reused_addresses(@routers, @disused, cluster.routers)
             @disused.clear
             @prefer_initial_router = !cluster.has_writers?
