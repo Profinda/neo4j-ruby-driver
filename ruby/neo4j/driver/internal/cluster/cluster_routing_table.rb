@@ -71,7 +71,7 @@ module Neo4j::Driver
         end
 
         def forget_writer(to_remove)
-          Util::LockUtil.execute_with_lock(@table_lock.write_lock) do
+          @table_lock.with_write_lock do
             @writers = new_without_address_if_present(@writers, to_remove)
             @disused << to_remove
           end
